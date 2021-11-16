@@ -5,6 +5,8 @@ bash automated workclock
 Für das Homeoffice eine kleine automatisierte Zeitspeicherfunktion
 
 Code example:
+
+
 		#!/bin/bash
 		x=0
 		w=$(date)

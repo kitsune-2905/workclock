@@ -33,7 +33,7 @@ while true
 			echo -e '\e[38;5;6m---------------------------------------------------' >> zeitspeicher
 			echo 'begonnen am '$startdate' um '$starttime' beendet um '$endtime >> zeitspeicher
 			echo -e '\e[38;5;12m'$stunden' Stunden, '$minuten' Minuten gearbeitet\e[38;5;255m' >> zeitspeicher
-			echo $startdate' , '$starttime' ,'$endtime' , '$stunden':'$minuten >> zeittable.csv
+			echo $startdate' , '$starttime' , '$endtime' , '$stunden':'$minuten >> zeittable.csv
 			break
 		fi
 		if [[ $l = r ]]; then

@@ -36,7 +36,8 @@ while true
 			break
 		fi
 	done
-echo "Task "$task" für deine Arbeit hinzugefügt"
+echo ""
+echo -e "\e[38;5;255mTask \e[38;5;6m"$task"\e[38;5;255m für deine Arbeit hinzugefügt"
 echo ''
 echo -e '\e[38;5;216mzum Speichern Taste \e[38;5;255ms\e[38;5;216m drücken, zum Abbrechen drücke Taste \e[38;5;255mr'
 while true

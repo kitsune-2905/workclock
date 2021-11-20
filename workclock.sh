@@ -23,6 +23,20 @@ echo ''
 echo -e '\e[38;5;6m---------------------------------------------------'
 echo 'begonnen am '$startdate' um '$starttime' beendet um '$endtime
 echo -e '\e[38;5;12m'$stunden' Stunden, '$minuten' Minuten gearbeitet\e[38;5;255m'
+echo ""
+echo "willst du eine Taskbeschreibung hinzufügen drücke [y/n] ?"
+while true
+	do
+		read -s -N 1 -t 1 m
+		if [[ $m = 'y' ]]; then
+			read -p "Task: " task
+			break
+		elif [[ $m = 'n' ]]; then
+			echo "n gedrück, kein Task hinzugefügt"
+			break
+		fi
+	done
+echo "Task "$task" für deine Arbeit hinzugefügt"
 echo ''
 echo -e '\e[38;5;216mzum Speichern Taste \e[38;5;255ms\e[38;5;216m drücken, zum Abbrechen drücke Taste \e[38;5;255mr'
 while true
@@ -33,7 +47,7 @@ while true
 			echo -e '\e[38;5;6m---------------------------------------------------' >> zeitspeicher
 			echo 'begonnen am '$startdate' um '$starttime' beendet um '$endtime >> zeitspeicher
 			echo -e '\e[38;5;12m'$stunden' Stunden, '$minuten' Minuten gearbeitet\e[38;5;255m' >> zeitspeicher
-			echo $startdate' , '$starttime' , '$endtime' , '$stunden':'$minuten >> zeittable.csv
+			echo $startdate' , '$starttime' , '$endtime' , '$stunden':'$minuten, $task >> zeittable.csv
 			break
 		fi
 		if [[ $l = r ]]; then

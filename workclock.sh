@@ -16,7 +16,8 @@ while true
 	done
 modminuten=$(($x%3600))
 stunden=$(($x/3600))
-minuten=$((modminuten/60))
+minutenunformated=$((modminuten/60))
+minuten=$(printf "%02d" $minutenunformated)
 enddate=$(date '+%Y-%m-%d')
 endtime=$(date '+%H:%M:%S')
 echo ''
@@ -40,15 +41,22 @@ echo ""
 echo -e "\e[38;5;255mTask \e[38;5;6m"$task"\e[38;5;255m für deine Arbeit hinzugefügt"
 echo ''
 echo -e '\e[38;5;216mzum Speichern Taste \e[38;5;255ms\e[38;5;216m drücken, zum Abbrechen drücke Taste \e[38;5;255mr'
+if test -f "zeittable.csv"; then
+	echo "Zeittable.csv existiert"
+else
+	echo "Datum,Startzeit,Endzeit,Dauer,Task" > zeittable.csv
+	echo "Datei Zeittable.csv wurde erstellt"
+fi
 while true
 	do
+
 		read -t 1 -n 1 l <&1
 		if [[ $l = s ]]; then
 			echo ''
 			echo -e '\e[38;5;6m---------------------------------------------------' >> zeitspeicher
 			echo 'begonnen am '$startdate' um '$starttime' beendet um '$endtime >> zeitspeicher
 			echo -e '\e[38;5;12m'$stunden' Stunden, '$minuten' Minuten gearbeitet\e[38;5;255m' >> zeitspeicher
-			echo $startdate' , '$starttime' , '$endtime' , '$stunden':'$minuten, $task >> zeittable.csv
+			echo $startdate','$starttime','$endtime','$stunden':'$minuten','$task >> zeittable.csv
 			break
 		fi
 		if [[ $l = r ]]; then
